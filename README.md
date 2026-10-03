@@ -1,5 +1,7 @@
 # Invoice Automation
 
+**Live demo:** https://YOUR-APP-URL.streamlit.app
+
 An AI-powered pipeline that reads invoices (PDFs and scanned images), extracts structured data, validates it, and routes each invoice to automatic approval or human review.
 
 ## The Problem

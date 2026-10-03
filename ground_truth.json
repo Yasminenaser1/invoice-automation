@@ -1,0 +1,164 @@
+{
+  "INV-1001": {
+    "vendor_name": "Brightline IT Solutions",
+    "vendor_address": "88 Main St, Richardson, TX 75080",
+    "invoice_number": "INV-1001",
+    "invoice_date": "2026-09-08",
+    "customer_name": "Lakeside Dental Group",
+    "line_items": [
+      {
+        "description": "Laptop Setup",
+        "quantity": 5,
+        "unit_price": 95.0,
+        "amount": 475.0
+      },
+      {
+        "description": "Wireless Mouse",
+        "quantity": 4,
+        "unit_price": 29.99,
+        "amount": 119.96
+      }
+    ],
+    "subtotal": 594.96,
+    "tax": 49.08,
+    "total": 644.04,
+    "expected_status": "approved"
+  },
+  "INV-1002": {
+    "vendor_name": "Brightline IT Solutions",
+    "vendor_address": "88 Main St, Richardson, TX 75080",
+    "invoice_number": "INV-1002",
+    "invoice_date": "2026-09-01",
+    "customer_name": "Lakeside Dental Group",
+    "line_items": [
+      {
+        "description": "Laptop Setup",
+        "quantity": 7,
+        "unit_price": 95.0,
+        "amount": 665.0
+      },
+      {
+        "description": "Wireless Mouse",
+        "quantity": 1,
+        "unit_price": 29.99,
+        "amount": 29.99
+      }
+    ],
+    "subtotal": 694.99,
+    "tax": 57.34,
+    "total": 752.33,
+    "expected_status": "approved"
+  },
+  "INV-1003": {
+    "vendor_name": "Northwind Office Supply",
+    "vendor_address": "1200 Commerce St, Dallas, TX 75201",
+    "invoice_number": "INV-1003",
+    "invoice_date": "2026-09-14",
+    "customer_name": "Lakeside Dental Group",
+    "line_items": [
+      {
+        "description": "Printer Paper (box)",
+        "quantity": 4,
+        "unit_price": 42.5,
+        "amount": 170.0
+      },
+      {
+        "description": "Office Chair",
+        "quantity": 9,
+        "unit_price": 175.0,
+        "amount": 1575.0
+      }
+    ],
+    "subtotal": 1745.0,
+    "tax": 143.96,
+    "total": 1888.96,
+    "expected_status": "approved"
+  },
+  "INV-1004": {
+    "vendor_name": "Summit Cleaning Services",
+    "vendor_address": "455 Elm St, Plano, TX 75074",
+    "invoice_number": "INV-1004",
+    "invoice_date": "2026-09-07",
+    "customer_name": "Maple Grove Pediatrics",
+    "line_items": [
+      {
+        "description": "Office Cleaning (weekly)",
+        "quantity": 6,
+        "unit_price": 320.0,
+        "amount": 1920.0
+      },
+      {
+        "description": "Window Cleaning",
+        "quantity": 5,
+        "unit_price": 140.0,
+        "amount": 700.0
+      },
+      {
+        "description": "Carpet Shampoo",
+        "quantity": 3,
+        "unit_price": 185.0,
+        "amount": 555.0
+      }
+    ],
+    "subtotal": 3175.0,
+    "tax": 261.94,
+    "total": 3486.94,
+    "expected_status": "needs_review"
+  },
+  "INV-1005": {
+    "vendor_name": "Northwind Office Supply",
+    "vendor_address": "1200 Commerce St, Dallas, TX 75201",
+    "invoice_number": "INV-1005",
+    "invoice_date": "2026-09-20",
+    "customer_name": "Maple Grove Pediatrics",
+    "line_items": [
+      {
+        "description": "Desk Organizer",
+        "quantity": 6,
+        "unit_price": 24.99,
+        "amount": 149.94
+      },
+      {
+        "description": "Printer Paper (box)",
+        "quantity": 6,
+        "unit_price": 42.5,
+        "amount": 255.0
+      }
+    ],
+    "subtotal": 404.94,
+    "tax": 33.41,
+    "total": 438.35,
+    "expected_status": "approved"
+  },
+  "INV-1006": {
+    "vendor_name": "Northwind Office Supply",
+    "vendor_address": "1200 Commerce St, Dallas, TX 75201",
+    "invoice_number": "INV-1006",
+    "invoice_date": "2026-09-28",
+    "customer_name": "Maple Grove Pediatrics",
+    "line_items": [
+      {
+        "description": "Printer Paper (box)",
+        "quantity": 9,
+        "unit_price": 42.5,
+        "amount": 382.5
+      },
+      {
+        "description": "Toner Cartridge",
+        "quantity": 5,
+        "unit_price": 89.99,
+        "amount": 449.95
+      },
+      {
+        "description": "Desk Organizer",
+        "quantity": 10,
+        "unit_price": 24.99,
+        "amount": 249.9
+      }
+    ],
+    "subtotal": 1082.35,
+    "tax": 89.29,
+    "total": 1171.64,
+    "expected_status": "approved"
+  }
+}

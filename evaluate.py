@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
 
+import sys
+INPUT_NAME = Path(sys.argv[1]).name if len(sys.argv) > 1 else "invoices"
 TRUTH = json.loads(Path("ground_truth.json").read_text())
 OUTPUT_DIRS = {
-    "approved": Path("output/approved"),
-    "needs_review": Path("output/needs_review"),
+    "approved": Path("output", INPUT_NAME, "approved"),
+    "needs_review": Path("output", INPUT_NAME, "needs_review"),
 }
 TEXT_FIELDS = ["vendor_name", "invoice_number", "invoice_date", "customer_name"]
 NUMBER_FIELDS = ["subtotal", "tax", "total"]

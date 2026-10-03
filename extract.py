@@ -3,6 +3,8 @@ import time
 from google import genai
 from google.genai import types, errors
 
+from dotenv import load_dotenv
+load_dotenv()
 client = genai.Client()  # reads GEMINI_API_KEY automatically
 MODEL = "gemini-3.8-flash"
 

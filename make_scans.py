@@ -1,6 +1,6 @@
 import random
 from pathlib import Path
-import fitz  # PyMuPDF: turns PDF pages into images
+import pymupdf  # turns PDF pages into images
 from PIL import Image, ImageFilter, ImageEnhance
 
 def scan_effect(img, rng):
@@ -24,7 +24,7 @@ def main():
     out_dir.mkdir(exist_ok=True)
 
     for pdf_path in sorted(Path("invoices").glob("*.pdf")):
-        page = fitz.open(pdf_path)[0]
+        page = pymupdf.open(pdf_path)[0]
         pix = page.get_pixmap(dpi=120)  # lower resolution, like a cheap scanner
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
         img = scan_effect(img, rng)

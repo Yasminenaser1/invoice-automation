@@ -1,0 +1,27 @@
+{
+  "source_file": "INV-1002.pdf",
+  "extracted": {
+    "vendor_name": "Brightline IT Solutions",
+    "invoice_number": "INV-1002",
+    "invoice_date": "2026-09-01",
+    "customer_name": "Lakeside Dental Group",
+    "line_items": [
+      {
+        "description": "Laptop Setup",
+        "quantity": 7,
+        "unit_price": 95.0,
+        "amount": 665.0
+      },
+      {
+        "description": "Wireless Mouse",
+        "quantity": 1,
+        "unit_price": 29.99,
+        "amount": 29.99
+      }
+    ],
+    "subtotal": 694.99,
+    "tax": 57.34,
+    "total": 752.33
+  },
+  "issues": []
+}

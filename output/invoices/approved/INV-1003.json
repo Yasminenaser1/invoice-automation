@@ -1,0 +1,27 @@
+{
+  "source_file": "INV-1003.pdf",
+  "extracted": {
+    "vendor_name": "Northwind Office Supply",
+    "invoice_number": "INV-1003",
+    "invoice_date": "2026-09-14",
+    "customer_name": "Lakeside Dental Group",
+    "line_items": [
+      {
+        "description": "Printer Paper (box)",
+        "quantity": 4,
+        "unit_price": 42.5,
+        "amount": 170.0
+      },
+      {
+        "description": "Office Chair",
+        "quantity": 9,
+        "unit_price": 175.0,
+        "amount": 1575.0
+      }
+    ],
+    "subtotal": 1745.0,
+    "tax": 143.96,
+    "total": 1888.96
+  },
+  "issues": []
+}

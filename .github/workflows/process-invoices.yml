@@ -1,0 +1,44 @@
+name: Process invoices
+
+on:
+  schedule:
+    - cron: "0 13 * * *"    # every day at 13:00 UTC (8 AM Dallas time)
+  push:
+    paths:
+      - "invoices/**"         # also run when new invoices are uploaded
+      - "invoices_scanned/**"
+  workflow_dispatch:          # allows a manual run from GitHub or Terminal
+
+permissions:
+  contents: write             # allows the workflow to save results to the repo
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python pipeline.py invoices
+          python pipeline.py invoices_scanned
+
+      - name: Save results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --staged --quiet || git commit -m "Process invoices [automated]"
+          git push

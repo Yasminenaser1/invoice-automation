@@ -1,12 +1,22 @@
 import json
+import sys
 import time
+from pathlib import Path
 from google import genai
 from google.genai import types, errors
-
 from dotenv import load_dotenv
+
 load_dotenv()
-client = genai.Client()  # reads GEMINI_API_KEY automatically
+client = genai.Client()  # reads GEMINI_API_KEY from .env
 MODEL = "gemini-3.8-flash"
+
+# File extension -> the label Gemini needs to understand the file
+MIME_TYPES = {
+    ".pdf": "application/pdf",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".png": "image/png",
+}
 
 PROMPT = """You are reading an invoice. Extract these fields and return JSON only:
 {
@@ -33,15 +43,19 @@ def call_with_retry(fn, max_attempts=5):
             print(f"Server busy ({e.code}). Attempt {attempt} failed, retrying in {wait}s...")
             time.sleep(wait)
 
-def extract_invoice(pdf_path):
-    with open(pdf_path, "rb") as f:
-        pdf_bytes = f.read()
+def extract_invoice(file_path):
+    suffix = Path(file_path).suffix.lower()
+    if suffix not in MIME_TYPES:
+        raise ValueError(f"Unsupported file type: {suffix} (supported: {', '.join(MIME_TYPES)})")
+
+    with open(file_path, "rb") as f:
+        file_bytes = f.read()
 
     def request():
         return client.models.generate_content(
             model=MODEL,
             contents=[
-                types.Part.from_bytes(data=pdf_bytes, mime_type="application/pdf"),
+                types.Part.from_bytes(data=file_bytes, mime_type=MIME_TYPES[suffix]),
                 PROMPT,
             ],
             config=types.GenerateContentConfig(response_mime_type="application/json"),
@@ -51,5 +65,6 @@ def extract_invoice(pdf_path):
     return json.loads(response.text)
 
 if __name__ == "__main__":
-    data = extract_invoice("invoices/INV-1001.pdf")
+    path = sys.argv[1] if len(sys.argv) > 1 else "invoices/INV-1001.pdf"
+    data = extract_invoice(path)
     print(json.dumps(data, indent=2))

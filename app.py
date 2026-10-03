@@ -8,8 +8,8 @@ STATUSES = ["approved", "needs_review"]
 
 # status -> (label, text color, background color)
 STATUS_STYLE = {
-    "approved": ("Approved", "#15803D", "#DCFCE7"),
-    "needs_review": ("Needs review", "#B45309", "#FEF3C7"),
+    "approved": ("Approved", "#16A34A", "rgba(22, 163, 74, 0.15)"),
+    "needs_review": ("Needs review", "#D97706", "rgba(217, 119, 6, 0.15)"),
 }
 
 st.set_page_config(page_title="Invoice Automation", layout="wide")
@@ -25,7 +25,7 @@ st.markdown("""
 }
 .totals .grand {
     font-size: 1.2rem; font-weight: 700;
-    border-top: 1px solid #D1D5DB; margin-top: 4px; padding-top: 4px;
+    border-top: 1px solid rgba(128, 128, 128, 0.4); margin-top: 4px; padding-top: 4px;
 }
 </style>
 """, unsafe_allow_html=True)

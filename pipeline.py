@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from google.genai import errors
 from extract import extract_invoice
 from validate import validate_invoice
 
@@ -47,14 +48,26 @@ def run():
     pdfs = sorted(INVOICE_DIR.glob("*.pdf"))
     print(f"Found {len(pdfs)} invoice(s)\n")
 
-    counts = {"approved": 0, "needs_review": 0, "skipped": 0}
+    counts = {"approved": 0, "needs_review": 0, "skipped": 0, "failed": 0}
     for pdf in pdfs:
-        status = process_invoice(pdf)
+        try:
+            status = process_invoice(pdf)
+        except errors.ClientError as e:
+            if e.code == 429:
+                print(f"\nSTOPPED  Daily API limit reached at {pdf.stem}.")
+                print("         Run again later. Finished invoices will be skipped.")
+                break
+            print(f"FAILED   {pdf.stem}: {e}")
+            status = "failed"
+        except Exception as e:
+            print(f"FAILED   {pdf.stem}: {e}")
+            status = "failed"
         counts[status] += 1
 
     print(f"\nDone. Approved: {counts['approved']}, "
           f"Needs review: {counts['needs_review']}, "
-          f"Skipped: {counts['skipped']}")
+          f"Skipped: {counts['skipped']}, "
+          f"Failed: {counts['failed']}")
 
 if __name__ == "__main__":
     run()
